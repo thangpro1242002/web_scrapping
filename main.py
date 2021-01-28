@@ -3,22 +3,15 @@ import luu_url
 
 def main():
     url_goc=input("Nhập link khởi đầu:")
+    url_goc = input('Nhập link khởi đầu: ')
+    url_goc = quet_url.sua_url_goc(url_goc)
+    url_tim_duoc = quet_url.tim_url_lien_quan(url_goc, url_goc)
+    waiting_line = url_tim_duoc
+    history = quet_url.them_va_duyet_hang_cho(waiting_line, url_goc)
+    luu_url.tao_thu_muc('bong_da_2')
+    luu_url.luu_tat_ca_file(history)
     
 
-    #Kịch bản tải các trang web
-    while (count < max_page) and (len(url_list) > 0):
-        url = url_list.pop(0)
-        page = web_op.doc_noi_dung(url)
-        links = web_op.lay_cac_duong_link(page)
-        for item in links: #Duyệt từng đường link thu được để kiểm tra tính hợp lệ
-            if web_op.kiem_tra_link(item): #Nếu đường link là hợp lệ thì tiếp tục thuwucj hiện đoạn lệnh bên dưới
-                item = web_op.chinh_sua_link(item)  #Chỉnh sửa nếu thiếu phần https://...
-                if not((item in url_list) and (item in history)):  #Nếu đường link chưa hề được duyệt và chưa có trong hàng đợi
-                    url_list.append(item) #Thêm đường link mới vào danh sách chờ duyệt
-        folder_op.luu_noi_dung_xuong_file(page, data_folder)
-        history.append(url)
-        count += 1
-
-# Press the green button in the gutter to run the script.
+    # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     start()
