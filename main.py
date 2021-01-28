@@ -1,12 +1,9 @@
-import folder_op, web_op
+import web_url
+import luu_url
 
-def start():
-    #Nhóm các biến toàn cục cung cấp thông số cho chương trình
-    url_list = ['https:''vietnamnet.vn']  #Chứa các đường link sẽ được duyệt
-    history = []  #Chứa các đường link đã duyệt
-    max_page = 1000  #Quy định số lượng trang web được tải về
-    count = 0 #Đếm số lượng trang web đã tải về
-    data_folder = "C:\\Users\\MyPC\\Downloads\\crawl\\"
+def main():
+    url_goc=input("Nhập link khởi đầu:")
+    
 
     #Kịch bản tải các trang web
     while (count < max_page) and (len(url_list) > 0):
