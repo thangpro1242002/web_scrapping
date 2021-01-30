@@ -15,7 +15,7 @@ def start():
         # Đọc nội dung
         page = web_url.doc_noi_dung(url)
         # Lấy tất cả đường dẫn
-        links = web_url.lay_duong_link((page))
+        links = web_url.lay_duong_dan((page))
         for item in links:
             if not web_url.kiem_tra_link(item):
                 item = web_url.chinh_sua_link("https://vietnamnet.vn/", item)
