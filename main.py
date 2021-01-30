@@ -26,5 +26,5 @@ def start():
         # đếm số đường dẫn đã duyệt
         count += 1
       
-    if __name__ == '__main__':
+if __name__ == '__main__':
     start()
