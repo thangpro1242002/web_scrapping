@@ -17,8 +17,8 @@ def start():
         # Lấy tất cả đường dẫn
         links = web_url.lay_duong_dan((page))
         for item in links:
-            if not web_url.kiem_tra_link(item):
-                item = web_url.chinh_sua_link("https://vietnamnet.vn/", item)
+            if not web_url.kiem_tra_duong_dan(item):
+                item = web_url.chinh_sua_duong_dan("https://vietnamnet.vn/", item)
             if not ((item in url_list) and (item in history)):
                 url_list.append(item)
         luu_url.luu_noi_dung(page, data_folder, count)
