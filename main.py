@@ -8,7 +8,7 @@ def start():
     count = 0  # đếm số lượng trang web đã tải về
     data_folder = "C:\\webscrapping\\"
     # Tạo Folder
-    folder.kiem_tra_folder(data_folder)
+    folder.tao_thu_muc(data_folder)
     # kịch bản tải các trang web
     while (count < max_page) and (len(url_list) > 0):
         url = url_list.pop(0)
