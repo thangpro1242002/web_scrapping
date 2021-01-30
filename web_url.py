@@ -19,5 +19,17 @@ def lay_duong_dan(content):
         link = item.get("href")     #Lấy ra các đường dẫn trong href
         result.append(link)
     return result
+def kiem_tra_duong_dan(url):
+    check = re.search("^http", url)
+    try:
+        if url == check.string:
+            return True
+    except:
+        return False        
+        
+#Hàm này để chỉnh sửa đường dẫn chưa hợp lệ
+def chinh_sua_duong_dan(url, item): 
+    item = str(url) + item    #Thêm https://... vào
+    return item
 
 
