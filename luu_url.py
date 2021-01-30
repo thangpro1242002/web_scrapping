@@ -1,19 +1,26 @@
 
 # Các thư viện cần thiết
 import os
-import requests
+#Hàm tạo thư mục 
+def kiem_tra_folder(path):
+    os.chdir(path)  #Di chuyển đến thư mục trong đường dẫn path
+    os.mkdir('webscrapping')
 
-# Hàm Tạo thư mục và chuyển đến thư mục đó
-# Cần truyền vào cho hàm Tên thư mục
-def tao_thu_muc(name):
-    os.mkdir(name)
-    os.chdir(name)
+    #Tạo file History.txt trong webscrapping
+    path = 'C:\\webscrapping\\'
+    os.chdir(path)  # Di chuyển đến thư mục trong đường dẫn path
+    file = open("History.txt", "w", encoding="utf-8")
+    for item in content:
+        file.write(item)
+    file.close()
+
+
 
 
 #Hàm này để lưu lại các đường dẫn đã lấy vào thư mục vừa tạo
 def luu_file(data, name_folder):
     #data là list chứa nội dung file html
-    path = "C:\Users\Admin\Desktop\web_scrapping"
+    path = "C:\\webscrapping\\"
     os.chdir(path + str(name_folder))
 
 
