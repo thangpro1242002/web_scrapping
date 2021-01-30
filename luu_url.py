@@ -2,7 +2,7 @@
 # Các thư viện cần thiết
 import os
 #Hàm tạo thư mục 
-def kiem_tra_folder(path):
+def tao_thu_muc(path):
     os.chdir(path)  #Di chuyển đến thư mục trong đường dẫn path
     os.mkdir('webscrapping')
 
