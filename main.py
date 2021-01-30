@@ -6,7 +6,7 @@ def start():
     history = []  # DS các đường dẫn đã duyệt
     max_page = 15  # quy định số lượng trang web được tải về
     count = 0  # đếm số lượng trang web đã tải về
-    data_folder = "C:\Users\Admin\Desktop\web_scrapping"
+    data_folder = "C:\\webscrapping\\"
     # Tạo Folder
     folder.kiem_tra_folder(data_folder)
     # kịch bản tải các trang web
