@@ -23,7 +23,7 @@ def start():
         item = web1.lay_duong_dan(content)
         for i in item:
         if web1.kiem_tra_duong_dan(i) == False:   ## Kiểm tra đường dẫn
-            i = web1.chinh_sua_duong_dan(url_first, i)       
+            i = web1.chinh_sua_duong_dan(home_page, i)       
         if (i not in history) and (i not in url_list):
             if web1.kiem_tra_url_da_duyet(i) == True:
                 continue    
