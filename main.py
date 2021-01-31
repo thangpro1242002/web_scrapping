@@ -9,7 +9,7 @@ def start():
     data_folder = "C:\\webscrapping\\"
     # Tạo Folder
     folder.tao_thu_muc(data_folder)
-    url_list.append(home_page) #thêm đường link mình nhập từ domain vào list url_list
+    url_list.append(home_page) #thêm đường link mình nhập từ home_page vào list url_list
     # kịch bản tải các trang web
     while (count < max_page) and (len(url_list) > 0):   #sử dụng vòng lặp while với điều kiện biến đếm phải nhỏ hơn số lượng của page và độ dài của link phải lớn hơn 0
         url = url_list.pop(0)  # Lấy phần tử đầu tiên của url_list
