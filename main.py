@@ -1,36 +1,49 @@
-import web_url
-import luu_url
+import folder, web
 
-def start():
-    home_page = input("nhap link :")  #trang chủ để chứa các đường link
-    url_list = history = []  # DS các đường dẫn đã duyệt
-    max_page =int(input("nhập số trang bạn muốn tải:"))  #Nhập số lượng trang web mà bạn muốn tải
-    count = 0  # đếm số lượng trang web đã tải về
-    data_folder = "C:\\webscrapping\\"
-    # Tạo Folder
-    folder.tao_thu_muc(data_folder)
-    url_list.append(home_page) #thêm đường link mình nhập từ home_page vào list url_list
-    # kịch bản tải các trang web
-    while (count < max_page) and (len(url_list) > 0):   #sử dụng vòng lặp while với điều kiện biến đếm phải nhỏ hơn số lượng của page và độ dài của link phải lớn hơn 0
-        url = url_list.pop(0)  # Lấy phần tử đầu tiên của url_list
-        # danh sách những đường dẫn vừa tìm được
-        url_new = []
-        url_new_limit = 1400
-        history.append(url)  # thêm phần tử vào history
-        # Đọc nội dung
-        data = web_url.doc_noi_dung(url) 
-        # Lấy tất cả đường dẫn
-        item = web_url.lay_duong_dan(content)
-        for i in item:
-        if web1.kiem_tra_duong_dan(i) == False:   ## Kiểm tra đường dẫn
-            i = web_url.chinh_sua_duong_dan(home_page, i)       
+# Kịch bản
+
+# Nhập đường dẫn, giới hạn page tải về
+url_first = input("Nhập đường dẫn:")
+n = int(input("Nhập giới hạn page: "))
+# Tạo các danh sách
+url_list = []  # DS các đường dẫn chưa duyệt
+url_list_limit = 5000
+history = []  # DS các đường dẫn đã duyệt
+max_pages = n
+folder.kiem_tra_folder("C:\\")  # Kiểm tra và tạo thư mục CRAWLER để lưu trữ
+data_folder = 'C:\\CRAWLER'  # Lưu vào ổ C thư mục CRAWLER
+count = 0
+# Thêm url vào hàng chờ
+url_list.append(url_first)
+# Tạo Folder
+folder.kiem_tra_folder(data_folder)
+while count < max_pages:
+    url = url_list.pop(0)
+    # danh sách những đường dẫn vừa tìm được
+    url_new = []
+    url_new_limit = 1000
+    # Đọc nội dung
+    content = web.doc_noi_dung(url)
+    # Lấy tất cả đường dẫn
+    item = web.lay_duong_dan(content)
+    for i in item:
+        if web.kiem_tra_duong_dan(i) == False:  ## Kiểm tra đường dẫn
+            i = web.chinh_sua_duong_dan(url_first, i)
         if (i not in history) and (i not in url_list):
-            if web_url.kiem_tra_url_da_duyet(i) == True:
-                continue    
-            else:    
-                url_new.append(i)       ###Thêm đường dẫn hợp lệ vào url_new
-        # đếm số đường dẫn đã duyệt
-        count += 1
-      
-if __name__ == '__main__':
-    start()
+            if web.kiem_tra_url_da_duyet(i) == True:
+                continue
+            else:
+                url_new.append(i)  ###Thêm đường dẫn hợp lệ vào url_new
+    # Lưu lại các url hợp lệ vào url_list
+    url_list = url_list + url_new
+    # đếm số đường dẫn đã duyệt
+    count += 1
+    # Lưu lại đường dẫn vừa lấy từ web về vào lịch sử
+    folder.luu_lich_su_dulieu_da_cao(url)
+    history.append(url)
+    # data_array là một list gồm nội dung file html...
+    data_array = [content, url_new, url, url_new_limit]
+    name_folder = folder.tao_ten_folder()  # Tạo thư mục tự động và kết quả trả về là tên thư mục vừa tạo
+    w = folder.luu_file(data_array, name_folder)
+
+    print("Đã duyệt đường dẫn", url)
